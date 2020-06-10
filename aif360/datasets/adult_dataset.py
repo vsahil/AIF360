@@ -78,6 +78,8 @@ class AdultDataset(StandardDataset):
 
         train_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                   '..', 'data', 'raw', 'adult', 'adult.data')
+        train_path2 = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                  '..', 'data', 'raw', 'adult', 'adult_no_missing.csv')
         test_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                   '..', 'data', 'raw', 'adult', 'adult.test')
         # as given by adult.names
@@ -88,8 +90,10 @@ class AdultDataset(StandardDataset):
         try:
             train = pd.read_csv(train_path, header=None, names=column_names,
                 skipinitialspace=True, na_values=na_values)
+            # df = pd.read_csv(train_path2)
             test = pd.read_csv(test_path, header=0, names=column_names,
                 skipinitialspace=True, na_values=na_values)
+        
         except IOError as err:
             print("IOError: {}".format(err))
             print("To use this class, please download the following files:")

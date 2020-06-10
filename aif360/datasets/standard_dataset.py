@@ -105,6 +105,7 @@ class StandardDataset(BinaryLabelDataset):
         df = pd.get_dummies(df, columns=categorical_features, prefix_sep='=')
 
         # 6. Map protected attributes to privileged/unprivileged
+        
         privileged_protected_attributes = []
         unprivileged_protected_attributes = []
         for attr, vals in zip(protected_attribute_names, privileged_classes):
